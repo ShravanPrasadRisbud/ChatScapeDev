@@ -2,7 +2,7 @@
 // import firebase from "firebase"
 import Firebase from "firebase/compat/app"
 import "firebase/compat/firestore" // import using compat when dealing with firebase import statements
-import "firebase/auth"
+import "firebase/compat/auth"
 
 export function seedDatabase(firebase) {
   const users = [
