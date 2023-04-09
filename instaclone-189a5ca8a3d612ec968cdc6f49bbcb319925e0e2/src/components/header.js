@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import FirebaseContext from "../context/firebase"
 import UserContext from "../context/user"
 import * as ROUTES from "../constants/routes";
@@ -9,6 +9,7 @@ export default function Header() {
 
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
+  const history = useHistory();
 
   console.log('user', user);
 
@@ -46,10 +47,13 @@ export default function Header() {
                 <button
                   type="button"
                   title="Sign out" 
-                  onClick={() => firebase.auth().signOut()}
+                  onClick={() => 
+                    {firebase.auth().signOut();
+                     history.push(ROUTES.LOGIN);}}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
-                        firebase.auth().signOut() 
+                        firebase.auth().signOut();
+                        history.push(ROUTES.LOGIN);
                     }
                   }}
                 >
